@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "firstName": "Nicolas",
+      "lastName": "Marcora",
+      "phoneNumber": "123123123",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/NicolasMarcora.svg",
+      "id": 5
+    },
+    {
+      "firstName": "Dwayne",
+      "lastName": "Johnson",
+      "phoneNumber": "123123123123",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/DwayneJohnson.svg",
+      "id": 9
+    },
+    {
+      "firstName": "Geri",
+      "lastName": "Cupi",
+      "phoneNumber": "123123123123",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/GeriCupi.svg",
+      "id": 10
+    },
+    {
+      "firstName": "Ed",
+      "lastName": "Putans",
+      "phoneNumber": "123123123123",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/EdPutans.svg",
+      "id": 11
+    },
+    {
+      "firstName": "Luca",
+      "lastName": "Marcora",
+      "phoneNumber": "123123123",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/LucaMarcora.svg",
+      "id": 12
+    }
+  ],
+  "messages": [
+    {
+      "userId": 5,
+      "messageText": "Hey",
+      "conversationId": 1,
+      "id": 1
+    }
+  ],
+  "conversations": [
+    {
+      "userId": 5,
+      "participantId": 11,
+      "id": 1
+    }
+  ]
+}
