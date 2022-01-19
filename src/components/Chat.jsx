@@ -2,20 +2,16 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-import useStore from '../store'
 import Message from './Message'
 import MessageBox from './MessageBox'
 import UserTag from './UserTag'
 
-function Chat({ className }) {
+function Chat({ className, ...props }) {
   const { chatId } = useParams()
-
-  const chats = useStore(store => store.chats)
-  const currentUser = useStore(store => store.currentUser)
-  const setTalkingWithId = useStore(store => store.setTalkingWithId)
-  const talkingWithUser = useStore(store => store.getTalkingWithUser()) || {}
+  const { chats, currentUser, setTalkingWithId, getTalkingWithUser } = props
 
   const chat = chats.find(chat => chat.id === Number(chatId))
+  const talkingWithUser = getTalkingWithUser()
 
   useEffect(() => {
     setTalkingWithId(chat.withId)
@@ -24,6 +20,7 @@ function Chat({ className }) {
   // Messages are reversed so that the last one appears at the bottom
   // when using CSS: flex-flow: column-reverse;
   const reversedMessages = chat.messages.slice().reverse()
+
 
   return (
     <main className={className}>

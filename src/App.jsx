@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
 import MainWrapper from './components/MainWrapper'
 import ModalContainer from './modals/ModalContainer'
@@ -6,15 +6,13 @@ import ModalContainer from './modals/ModalContainer'
 import LoginPage from './pages/LoginPage'
 import MainPage from './pages/MainPage'
 import PageNotFound from './pages/PageNotFound'
-import useStore from './store'
+import useMain from './pages/useMain';
 
 function App() {
-  const fetchUsers = useStore(store => store.fetchUsers)
-  const fetchChats = useStore(store => store.fetchChats)
-  const clearChats = useStore(store => store.clearChats)
-  const closeModal = useStore(store => store.closeModal)
-  const currentUser = useStore(store => store.currentUser)
   const history = useHistory()
+  const props = useMain();
+  const { currentUser, fetchChats, clearChats, closeModal } = props;
+  const { fetchUsers } = props;
 
   useEffect(() => {
     fetchUsers()
@@ -44,17 +42,19 @@ function App() {
           <Redirect to="/login" />
         </Route>
         <Route exact path="/login">
-          <LoginPage />
+          <LoginPage {...props} />
         </Route>
         <Route path="/logged-in">
-          <MainPage />
+          <MainPage
+            {...props}
+          />
         </Route>
         <Route>
-          <PageNotFound />
+          <PageNotFound {...props} />
         </Route>
       </Switch>
 
-      <ModalContainer />
+      <ModalContainer {...props} />
     </MainWrapper>
   )
 }

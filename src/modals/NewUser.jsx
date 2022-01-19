@@ -1,11 +1,7 @@
 import styled from 'styled-components'
 import API from '../API'
-import useStore from '../store'
 
-function NewUser({ className }) {
-  const fetchUsers = useStore(store => store.fetchUsers)
-  const closeModal = useStore(store => store.closeModal)
-
+function NewUser({ className, ...props }) {
   function handleSubmit(event) {
     event.preventDefault()
     const formEl = event.target
@@ -17,7 +13,7 @@ function NewUser({ className }) {
       avatar: `https://avatars.dicebear.com/api/avataaars/${formEl.firstName.value}${formEl.lastName.value}.svg`
     }
 
-    API.createUser(newUserData).then(fetchUsers).then(closeModal)
+    API.createUser(newUserData).then(props.fetchUsers).then(props.closeModal)
   }
 
   return (

@@ -1,14 +1,9 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import UserTag from "../components/UserTag";
-import useStore from "../store";
 
-function LoginPage({ className }) {
-  const users = useStore((store) => store.users);
-  const login = useStore((store) => store.login);
-  const setModal = useStore((store) => store.setModal);
-  const fetchUsers = useStore((store) => store.fetchUsers);
-
+function LoginPage({ className, ...props }) {
+  const { fetchUsers, login, users, setModal } = props
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
@@ -18,8 +13,10 @@ function LoginPage({ className }) {
       <section className="login-section">
         <h2>Choose your user!</h2>
         <ul>
-          {users.map((user) => (
-            <li key={user.id}>
+          {users.map((user) => {
+            if (!user?.id) return null;
+
+            return <li key={user.id}>
               <button
                 onClick={() => {
                   login(user);
@@ -29,7 +26,9 @@ function LoginPage({ className }) {
                 <UserTag user={user} />
               </button>
             </li>
-          ))}
+          }
+
+          )}
 
           <li>
             <button

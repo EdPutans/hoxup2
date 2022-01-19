@@ -1,21 +1,19 @@
 import styled from 'styled-components'
-import useStore from '../store'
 import SideChatListItem from './SideChatListItem'
 import StartChatButton from './StarChatButton'
 
-function SideChatList({ className }) {
-  const chats = useStore(store => store.getFilteredChats())
-  const users = useStore(store => store.users)
+function SideChatList({ className, ...props }) {
+
 
   return (
     <ul className={className}>
       <li>
-        <StartChatButton />
+        <StartChatButton {...props} />
       </li>
-      {chats.map(chat => {
-        const user = users.find(user => user.id === chat.withId)
+      {props.chats.map(chat => {
+        const user = props.users.find(user => user.id === chat.withId)
 
-        return <SideChatListItem key={chat.id} chat={chat} user={user} />
+        return <SideChatListItem key={chat.id} chat={chat} user={user} {...props} />
       })}
     </ul>
   )

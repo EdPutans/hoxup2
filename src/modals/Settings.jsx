@@ -1,9 +1,6 @@
 import styled from 'styled-components'
-import useStore from '../store'
 
-function Settings({ className }) {
-  const logout = useStore(store => store.logout)
-  const deleteAccount = useStore(store => store.deleteAccount)
+function Settings({ className, logout, deleteAccount }) {
 
   return (
     <div className={className}>

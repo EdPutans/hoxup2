@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import useStore from '../store'
 import NewChat from './NewChat'
 import NewUser from './NewUser'
 import Settings from './Settings'
@@ -14,21 +13,19 @@ const modals = {
   test: TestModal
 }
 
-function ModalContainer({ className }) {
-  const modal = useStore(store => store.modal)
-  const closeModal = useStore(store => store.closeModal)
+function ModalContainer({ className, ...props }) {
+  const Modal = modals[props.modal]
 
-  const Modal = modals[modal]
 
-  if (!modal) return null
+  if (!props.modal) return null
 
   return (
     <div className={`modal-container ${className}`}>
       <div className="modal">
-        <button className="close-modal" onClick={closeModal}>
+        <button className="close-modal" onClick={props.closeModal}>
           &times;
         </button>
-        <Modal />
+        <Modal {...props} />
       </div>
     </div>
   )

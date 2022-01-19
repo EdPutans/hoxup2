@@ -1,16 +1,15 @@
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import useStore from '../store'
 import UserTag from './UserTag'
 
-function SideChatListItem({ user, chat, className }) {
-  const talkingWithId = useStore(store => store.talkingWithId)
+function SideChatListItem({ className, ...props }) {
+  const { user, chat, talkingWithId } = props;
   const history = useHistory()
 
   const lastMessage =
     chat.messages[chat.messages.length - 1]?.messageText ?? 'No messages'
 
-  if (!user) return null
+  if (!user?.id) return null
 
   return (
     <li

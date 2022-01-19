@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react'
 import API from '../API'
-import useStore from '../store'
 
-function MessageBox({ chat }) {
-  const currentUser = useStore(store => store.currentUser)
+function MessageBox({ chat, currentUser }) {
 
   const messageRef = useRef()
 
   useEffect(() => {
-    messageRef.current.focus()
+    if (messageRef && messageRef.current) {
+      messageRef.current.focus()
+    }
   }, [chat.id])
 
   const handleSubmit = e => {

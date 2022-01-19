@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import useStore from '../store'
 
-function SearchBar({ className }) {
-  const search = useStore(store => store.search)
-  const updateSearch = useStore(store => store.updateSearch)
+function SearchBar({ className, ...props }) {
+  const { search, updateSearch } = props;
 
   return (
     <div className={className}>

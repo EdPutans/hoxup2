@@ -34,6 +34,20 @@
       "phoneNumber": "123123123",
       "avatar": "https://avatars.dicebear.com/api/avataaars/LucaMarcora.svg",
       "id": 12
+    },
+    {
+      "firstName": "dsadsa",
+      "lastName": "sadsa",
+      "phoneNumber": "",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/dsadsasadsa.svg",
+      "id": 13
+    },
+    {
+      "firstName": "Edgaras",
+      "lastName": "Putans",
+      "phoneNumber": "07384084147",
+      "avatar": "https://avatars.dicebear.com/api/avataaars/EdgarasPutans.svg",
+      "id": 14
     }
   ],
   "messages": [
@@ -49,6 +63,16 @@
       "userId": 5,
       "participantId": 11,
       "id": 1
+    },
+    {
+      "userId": 9,
+      "participantId": 11,
+      "id": 2
+    },
+    {
+      "userId": 10,
+      "participantId": 9,
+      "id": 3
     }
   ]
 }

@@ -1,15 +1,15 @@
 import { Route } from 'react-router-dom'
 import SearchBar from '../components/ChatSearch'
+import React from 'react';
 
 import Chat from '../components/Chat'
 import SideChatList from '../components/SideChatList'
-import useStore from '../store'
+
 import UserTag from '../components/UserTag'
 import styled from 'styled-components'
 
-function MainPage({ className }) {
-  const currentUser = useStore(store => store.currentUser)
-  const setModal = useStore(store => store.setModal)
+function MainPage({ className, ...props }) {
+  const { currentUser, setModal } = props;
 
   if (!currentUser) return null
 
@@ -28,13 +28,13 @@ function MainPage({ className }) {
           </button>
         </header>
 
-        <SearchBar />
+        <SearchBar {...props} />
 
-        <SideChatList />
+        <SideChatList {...props} />
       </aside>
 
       <Route path="/logged-in/:chatId">
-        <Chat />
+        <Chat {...props} />
       </Route>
     </div>
   )

@@ -1,7 +1,6 @@
-import useStore from '../store'
 
-function StartChatButton() {
-  const setModal = useStore(store => store.setModal)
+
+function StartChatButton({ setModal }) {
 
   return (
     <button className="chat-button" onClick={() => setModal('newChat')}>
