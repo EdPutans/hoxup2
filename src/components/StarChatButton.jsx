@@ -1,6 +1,9 @@
 
-
-function StartChatButton({ setModal }) {
+/**
+ * @param {{ setModal: UseMainReturn['setModal'] }} props 
+ */
+function StartChatButton(props) {
+  const { setModal } = props;
 
   return (
     <button className="chat-button" onClick={() => setModal('newChat')}>

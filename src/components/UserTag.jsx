@@ -1,5 +1,9 @@
 import styled from 'styled-components'
-
+/**
+ * 
+ * @param {{ user: User, className?: string }} param0 
+ * @returns 
+ */
 function UserTag({ user, className }) {
   return (
     <>

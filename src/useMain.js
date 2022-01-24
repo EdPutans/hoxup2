@@ -1,6 +1,11 @@
-import API from '../API'
+import API from './API'
 import React from 'react'
 
+/**
+ * 
+ * @param {number} userId
+ * @returns {Promise<Chat[]>}
+ */
 async function getChatsForUser(userId) {
   let chats = []
 
@@ -26,11 +31,17 @@ async function getChatsForUser(userId) {
   return chats
 }
 
+/**
+ * 
+ * @returns {UseMainReturn}
+ */
 const useMain = () => {
-  const [chats, setChats] = React.useState([])
-  const [users, setUsers] = React.useState([])
-  const [currentUser, setCurrentUser] = React.useState(null)
-  const [modal, setModal] = React.useState('')
+  const [chats, setChats] = React.useState([]);
+  const [users, setUsers] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState(null);
+
+  const [modal, setModal] = React.useState("");
+
   const [talkingWithId, setTalkingWithId] = React.useState(null)
   const [search, setSearch] = React.useState(null)
 
@@ -106,10 +117,14 @@ const useMain = () => {
   return {
     chats, setChats,
     users, setUsers,
-    currentUser, setCurrentUser,
-    modal, setModal,
-    talkingWithId, setTalkingWithId,
-    search, setSearch,
+    currentUser,
+    setCurrentUser,
+    modal,
+    setModal,
+    talkingWithId,
+    setTalkingWithId,
+    search,
+    setSearch,
     getTalkingWithUser,
     login,
     logout,

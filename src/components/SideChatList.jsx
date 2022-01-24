@@ -2,9 +2,12 @@ import styled from 'styled-components'
 import SideChatListItem from './SideChatListItem'
 import StartChatButton from './StarChatButton'
 
+/**
+ * 
+ * @param {UseMainReturn & ClassNameExt} props
+ */
+
 function SideChatList({ className, ...props }) {
-
-
   return (
     <ul className={className}>
       <li>
@@ -13,7 +16,7 @@ function SideChatList({ className, ...props }) {
       {props.chats.map(chat => {
         const user = props.users.find(user => user.id === chat.withId)
 
-        return <SideChatListItem key={chat.id} chat={chat} user={user} {...props} />
+        return <SideChatListItem key={chat.id} chat={chat} user={user} talkingWithId={props.talkingWithId} />
       })}
     </ul>
   )

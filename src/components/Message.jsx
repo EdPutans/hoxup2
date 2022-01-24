@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {{message: Message; outgoing: boolean}} props
+ */
+
 function Message({ message, outgoing }) {
   return (
     <li className={outgoing ? 'outgoing' : ''}>

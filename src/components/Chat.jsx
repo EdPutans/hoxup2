@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import MainPage from '../pages/MainPage'
 
 import Message from './Message'
 import MessageBox from './MessageBox'
 import UserTag from './UserTag'
 
 function Chat({ className, ...props }) {
-  const { chatId } = useParams()
-  const { chats, currentUser, setTalkingWithId, getTalkingWithUser } = props
+  const { chats, currentUser, setTalkingWithId, getTalkingWithUser, chatId } = props
 
   const chat = chats.find(chat => chat.id === Number(chatId))
   const talkingWithUser = getTalkingWithUser()
@@ -21,7 +21,7 @@ function Chat({ className, ...props }) {
   // when using CSS: flex-flow: column-reverse;
   const reversedMessages = chat.messages.slice().reverse()
 
-
+  if (!talkingWithUser) return null;
   return (
     <main className={className}>
       <header className="panel">
@@ -37,13 +37,21 @@ function Chat({ className, ...props }) {
         ))}
       </ul>
       <footer>
-        <MessageBox chat={chat} />
+        <MessageBox chat={chat} currentUser={currentUser} />
       </footer>
     </main>
   )
 }
 
-export default styled(Chat)`
+const ChatWrappedInMain = (props) => {
+  const { chatId } = useParams()
+
+  return <MainPage {...props}>
+    <Chat {...props} chatId={chatId} />
+  </MainPage>
+}
+
+export default styled(ChatWrappedInMain)`
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: inherit;

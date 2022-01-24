@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-
-function SearchBar({ className, ...props }) {
-  const { search, updateSearch } = props;
+/**
+ * @param {UseMainReturn & ClassNameExt} props
+ */
+function SearchBar({ className, search, updateSearch }) {
 
   return (
     <div className={className}>

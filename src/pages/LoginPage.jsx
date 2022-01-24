@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import UserTag from "../components/UserTag";
 
-function LoginPage({ className, ...props }) {
+
+function LoginPage(props) {
+  /** @type {UseMainReturn} */
   const { fetchUsers, login, users, setModal } = props
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
 
   return (
-    <div className={`main-wrapper ${className}`}>
+    <div className={`main-wrapper ${props.className}`}>
       <section className="login-section">
         <h2>Choose your user!</h2>
         <ul>
@@ -38,9 +40,6 @@ function LoginPage({ className, ...props }) {
               <h3>+ Add a new user</h3>
             </button>
           </li>
-          {/* <li>
-            <button onClick={() => setModal('test')}>SEE TEST MODAL</button>
-          </li> */}
         </ul>
       </section>
     </div>

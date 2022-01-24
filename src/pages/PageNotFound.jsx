@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
-function PageNotFound({ className }) {
+/**
+ * @param {{className: string}} props  
+ */
+function PageNotFound(props) {
   const [count, setCount] = useState(5)
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -13,14 +16,14 @@ function PageNotFound({ className }) {
     }, 1000)
 
     return () => clearInterval(intervalId)
-  }, [history])
+  }, [navigate])
 
   useEffect(() => {
-    if (count < 1) history.push('/logged-in')
-  }, [count, history])
+    if (count < 1) navigate('/logged-in')
+  }, [count, navigate])
 
   return (
-    <div className={`main-wrapper ${className}`}>
+    <div className={`main-wrapper ${props.className}`}>
       <div>
         <h1>Page not found</h1>
         <h2>Taking you back in {count}</h2>

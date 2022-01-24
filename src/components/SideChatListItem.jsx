@@ -1,16 +1,24 @@
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import UserTag from './UserTag'
 
-function SideChatListItem({ className, ...props }) {
-  const { user, chat, talkingWithId } = props;
-  const history = useHistory()
+/**
+ * @param {{
+ * user: User,
+ * chat: Chat,
+ * talkingWithId: number, 
+ * className?: string
+ * }} props
+ */
+function SideChatListItem(props) {
+  const { user, chat, talkingWithId, className } = props;
+  const navigate = useNavigate()
 
   const lastMessage =
     chat.messages[chat.messages.length - 1]?.messageText ?? 'No messages'
 
   if (!user?.id) return null
-
+  if (!chat?.id) return <p>no chat</p>
   return (
     <li
       key={user.id}
@@ -18,7 +26,7 @@ function SideChatListItem({ className, ...props }) {
     >
       <button
         className="chat-button"
-        onClick={() => history.push(`/logged-in/${chat.id}`)}
+        onClick={() => navigate(`/logged-in/${chat.id}`)}
       >
         <div className="user-info">
           <UserTag user={user} />

@@ -3,12 +3,11 @@ import API from '../API'
 
 function MessageBox({ chat, currentUser }) {
 
+  /** @type {import('react').RefObject<HTMLInputElement>} */
   const messageRef = useRef()
 
   useEffect(() => {
-    if (messageRef && messageRef.current) {
-      messageRef.current.focus()
-    }
+    messageRef.current.focus()
   }, [chat.id])
 
   const handleSubmit = e => {
@@ -33,7 +32,6 @@ function MessageBox({ chat, currentUser }) {
         name="message"
         type="text"
         placeholder="Type a message"
-        rows="1"
         autoComplete="off"
       />
       <button type="submit">

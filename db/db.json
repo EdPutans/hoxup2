@@ -36,13 +36,6 @@
       "id": 12
     },
     {
-      "firstName": "dsadsa",
-      "lastName": "sadsa",
-      "phoneNumber": "",
-      "avatar": "https://avatars.dicebear.com/api/avataaars/dsadsasadsa.svg",
-      "id": 13
-    },
-    {
       "firstName": "Edgaras",
       "lastName": "Putans",
       "phoneNumber": "07384084147",
@@ -56,6 +49,114 @@
       "messageText": "Hey",
       "conversationId": 1,
       "id": 1
+    },
+    {
+      "conversationId": 1,
+      "userId": 5,
+      "messageText": "yo",
+      "id": 2
+    },
+    {
+      "conversationId": 1,
+      "userId": 11,
+      "messageText": "bla",
+      "id": 3
+    },
+    {
+      "conversationId": 3,
+      "userId": 10,
+      "messageText": "dsada",
+      "id": 4
+    },
+    {
+      "conversationId": 3,
+      "userId": 10,
+      "messageText": "dsad",
+      "id": 5
+    },
+    {
+      "conversationId": 3,
+      "userId": 9,
+      "messageText": "dsad",
+      "id": 6
+    },
+    {
+      "userId": 9,
+      "messageText": "aaaa",
+      "conversationId": 2,
+      "id": 7
+    },
+    {
+      "userId": 10,
+      "messageText": "dsa",
+      "conversationId": 3,
+      "id": 8
+    },
+    {
+      "conversationId": 2,
+      "userId": 11,
+      "messageText": "dadsa",
+      "id": 9
+    },
+    {
+      "conversationId": 2,
+      "userId": 11,
+      "messageText": "dsadsa",
+      "id": 10
+    },
+    {
+      "userId": 10,
+      "messageText": "da",
+      "conversationId": 3,
+      "id": 11
+    },
+    {
+      "userId": 9,
+      "messageText": "da",
+      "conversationId": 3,
+      "id": 12
+    },
+    {
+      "userId": 10,
+      "messageText": "",
+      "conversationId": 3,
+      "id": 13
+    },
+    {
+      "userId": 10,
+      "messageText": "ddd",
+      "conversationId": 3,
+      "id": 14
+    },
+    {
+      "userId": 10,
+      "messageText": "eqeqe",
+      "conversationId": 6,
+      "id": 15
+    },
+    {
+      "userId": 12,
+      "messageText": "aaaa",
+      "conversationId": 10,
+      "id": 16
+    },
+    {
+      "userId": 11,
+      "messageText": "ddd",
+      "conversationId": 1,
+      "id": 17
+    },
+    {
+      "conversationId": 10,
+      "userId": 12,
+      "messageText": "dsad",
+      "id": 18
+    },
+    {
+      "userId": 5,
+      "messageText": "ddd",
+      "conversationId": 1,
+      "id": 19
     }
   ],
   "conversations": [
@@ -73,6 +174,46 @@
       "userId": 10,
       "participantId": 9,
       "id": 3
+    },
+    {
+      "userId": 5,
+      "participantId": 9,
+      "id": 4
+    },
+    {
+      "userId": 14,
+      "participantId": 5,
+      "id": 5
+    },
+    {
+      "userId": 14,
+      "participantId": 10,
+      "id": 6
+    },
+    {
+      "userId": 14,
+      "participantId": 11,
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "participantId": 10,
+      "id": 8
+    },
+    {
+      "userId": 12,
+      "participantId": 9,
+      "id": 9
+    },
+    {
+      "userId": 12,
+      "participantId": 10,
+      "id": 10
+    },
+    {
+      "userId": 10,
+      "participantId": 11,
+      "id": 11
     }
   ]
 }

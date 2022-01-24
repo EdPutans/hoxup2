@@ -1,20 +1,20 @@
-import { Route } from 'react-router-dom'
 import SearchBar from '../components/ChatSearch'
 import React from 'react';
 
-import Chat from '../components/Chat'
 import SideChatList from '../components/SideChatList'
 
 import UserTag from '../components/UserTag'
 import styled from 'styled-components'
 
-function MainPage({ className, ...props }) {
-  const { currentUser, setModal } = props;
+function MainPage(props) {
+
+  /** @type {UseMainReturn & {children: JSX.Element}} */
+  const { currentUser, setModal, children } = props;
 
   if (!currentUser) return null
 
   return (
-    <div className={`main-wrapper ${className}`}>
+    <div className={`main-wrapper ${props.className}`}>
       <aside>
         <header className="panel">
           <UserTag user={currentUser} />
@@ -33,9 +33,7 @@ function MainPage({ className, ...props }) {
         <SideChatList {...props} />
       </aside>
 
-      <Route path="/logged-in/:chatId">
-        <Chat {...props} />
-      </Route>
+      {children}
     </div>
   )
 }

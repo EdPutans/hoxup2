@@ -1,16 +1,20 @@
 import { useEffect } from 'react'
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Routes, useNavigate, Navigate, } from 'react-router-dom'
+import Chat from './components/Chat'
 import MainWrapper from './components/MainWrapper'
 import ModalContainer from './modals/ModalContainer'
 
 import LoginPage from './pages/LoginPage'
 import MainPage from './pages/MainPage'
 import PageNotFound from './pages/PageNotFound'
-import useMain from './pages/useMain';
+import useMain from './useMain';
 
 function App() {
-  const history = useHistory()
+  const navigate = useNavigate()
+
+  /** @type {UseMainReturn} */
   const props = useMain();
+
   const { currentUser, fetchChats, clearChats, closeModal } = props;
   const { fetchUsers } = props;
 
@@ -18,45 +22,46 @@ function App() {
     fetchUsers()
   }, [fetchUsers])
 
+
   useEffect(() => {
     let intervalId
 
     if (currentUser) {
       fetchChats()
       intervalId = setInterval(fetchChats, 2000)
-      history.push('/logged-in')
+      navigate('/logged-in')
     } else {
-      history.push('/login')
+      navigate('/login')
     }
     return () => {
       clearChats()
       closeModal()
       clearInterval(intervalId)
     }
-  }, [currentUser, fetchChats, history, clearChats, closeModal])
+    // navigate as a dependency immediately redirects from logged-in/:  id to /logged-in
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser, fetchChats, clearChats, closeModal])
 
   return (
     <MainWrapper>
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/login" />
-        </Route>
-        <Route exact path="/login">
-          <LoginPage {...props} />
-        </Route>
-        <Route path="/logged-in">
-          <MainPage
-            {...props}
-          />
-        </Route>
-        <Route>
-          <PageNotFound {...props} />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Navigate to='/login' />} />
+
+        <Route path="/login" element={<LoginPage {...props} />} />
+        <Route path="/logged-in" element={<MainPage {...props} />} />
+        <Route path="/logged-in/:chatId" element={
+          <Chat {...props} />
+        } />
+
+
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
 
       <ModalContainer {...props} />
     </MainWrapper>
   )
 }
+
+
 
 export default App
